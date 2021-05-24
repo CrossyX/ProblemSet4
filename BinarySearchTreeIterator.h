@@ -31,13 +31,7 @@ public:
 
 	Iterator& operator++()
 	{
-		const BNode<T>* top = fStack.top();
-		
-		if (fBNodeTree->key != top->key)
-		{
-			fStack.push(fBNodeTree);
-		}
-
+		fStack.pop();
 		return *this;
 	}
 
@@ -64,16 +58,11 @@ public:
 
 	Iterator begin() const
 	{
-		return fStack.top();
+		return Iterator(fBNodeTree);
 	}
 
 	Iterator end() const
 	{
-		Iterator iter = *this;
-
-		iter.fBNodeTree = nullptr;
-		iter.fStack.empty();
-
-		return iter;
+		return begin().end();
 	}
 };
