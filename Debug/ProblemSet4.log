@@ -1,3 +1,2 @@
 ﻿  Main.cpp
-C:\Users\SamCross\Documents\Uni Work\DSP\ProblemSet4\BinarySearchTreeIterator.h(67): warning C4717: 'BinarySearchTreeIterator<int>::end': recursive on all control paths, function will cause runtime stack overflow
   ProblemSet4.vcxproj -> C:\Users\SamCross\Documents\Uni Work\DSP\ProblemSet4\Debug\ProblemSet4.exe

@@ -32,6 +32,7 @@ public:
 	Iterator& operator++()
 	{
 		fStack.pop();
+
 		return *this;
 	}
 
@@ -46,9 +47,7 @@ public:
 
 	bool operator==(const Iterator& aOtherIter) const
 	{
-		return
-			fBNodeTree == aOtherIter.fBNodeTree &&
-			fStack == aOtherIter.fStack;
+		return fStack.size() == aOtherIter.fStack.size();
 	}
 
 	bool operator!=(const Iterator& aOtherIter) const
@@ -63,6 +62,6 @@ public:
 
 	Iterator end() const
 	{
-		return begin().end();
+		return Iterator(&BNode<T>::NIL);
 	}
 };
