@@ -69,6 +69,6 @@ public:
 
 	Iterator end() const
 	{
-		return Iterator(fRoot).end();
+		return Iterator(&BNode<T>::NIL).end();
 	}
 };

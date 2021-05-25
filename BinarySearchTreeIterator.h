@@ -75,7 +75,7 @@ public:
 
 	Iterator begin() const
 	{
-		return Iterator(fBNodeTree);
+		return Iterator(&BNode<T>::NIL);
 	}
 
 	Iterator end() const
