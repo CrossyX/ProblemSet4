@@ -22,14 +22,29 @@ public:
 	{
 		fBNodeTree = aBNodeTree;
 		fStack = std::stack<const BNode<T>*>();
+
+		const BNode<T>* current = aBNodeTree;
+		
+		while (current->key != 0 || fStack.size() > 0)
+		{
+			while (current->key != 0)
+			{
+				fStack.push(current);
+				current = current->left;
+			}
+
+			current = fStack.top();
+			fStack.pop();
+
+			std::cout << current->key << " ";
+
+			current = current->right;
+		}
 	}
 
 	const T& operator*() const
 	{
-		const BNode<T>* node = fStack.top();
-		const T& key = fBNodeTree->key;
-		return node->key;
-		//return fBNodeTree->key;
+		return fBNodeTree->key;
 	}
 
 	Iterator& operator++()
@@ -60,14 +75,11 @@ public:
 
 	Iterator begin() const
 	{
-		Iterator iterator = Iterator(*this);
-		std::cout << iterator.fBNodeTree->key << endl;
-		return Iterator(*this);
+		return Iterator(fBNodeTree);
 	}
 
 	Iterator end() const
 	{
-		fStack.empty();
 		return Iterator(&BNode<T>::NIL);
 	}
 };
