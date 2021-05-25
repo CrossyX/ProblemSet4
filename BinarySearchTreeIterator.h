@@ -26,7 +26,10 @@ public:
 
 	const T& operator*() const
 	{
-		return fBNodeTree->key;
+		const BNode<T>* node = fStack.top();
+		const T& key = fBNodeTree->key;
+		return node->key;
+		//return fBNodeTree->key;
 	}
 
 	Iterator& operator++()
@@ -57,11 +60,14 @@ public:
 
 	Iterator begin() const
 	{
-		return Iterator(fBNodeTree);
+		Iterator iterator = Iterator(*this);
+		std::cout << iterator.fBNodeTree->key << endl;
+		return Iterator(*this);
 	}
 
 	Iterator end() const
 	{
+		fStack.empty();
 		return Iterator(&BNode<T>::NIL);
 	}
 };

@@ -91,25 +91,8 @@ public:
 
 	size_t height() const
 	{
-		if (fRoot == &BNode<T>::NIL)
-		{
-			return 0;
-		}
-		else
-		{
-			int left_side;
-			int right_side;
-			left_side = fRoot->left->height();
-			right_side = fRoot->right->height();
-			if (left_side > right_side)
-			{
-				return left_side;
-			}
-			else
-			{
-				return right_side;
-			}
-		}
+
+		return fRoot->height();
 	}
 
 	Iterator begin() const

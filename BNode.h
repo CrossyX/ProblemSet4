@@ -128,7 +128,7 @@ struct BNode
 
     bool leaf() const
     {
-        return height() == 0;
+        return (this->left == &NIL) && (this->right == &NIL);
     }
 
     size_t height() const
@@ -142,7 +142,7 @@ struct BNode
                 return height of right + 1*/
 
 
-        if (this == &NIL)
+        if (this->leaf())
         {
             return 0;
         }
