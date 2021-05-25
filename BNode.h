@@ -148,10 +148,8 @@ struct BNode
         }
         else
         {
-            int left_side;
-            int right_side;
-            left_side = left->height();
-            right_side = right->height();
+            int left_side = left->height();
+            int right_side = right->height();
             if (left_side > right_side)
             {
                 return left_side + 1;

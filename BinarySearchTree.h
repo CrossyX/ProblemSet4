@@ -48,40 +48,7 @@ public:
 			return true;
 		}
 
-		BNode<T>* x = fRoot;
-		BNode<T>* y = &BNode<T>::NIL;
-
-		while (!x->empty())
-		{
-			y = x;
-
-			if (aKey == x->key)
-			{
-				return false;
-			}
-
-			x = aKey < x->key ? x->left : x->right;
-		}
-
-		if (y->empty())
-		{
-			return false;
-		}
-		else
-		{
-			BNode<T>* z = new BNode<T>(aKey);
-
-			if (aKey < y->key)
-			{
-				y->left = z;
-			}
-			else
-			{
-				y->right = z;
-			}
-		}
-
-		return true;
+		return fRoot->insert(aKey);
 	}
 
 	bool remove(const T& aKey)
